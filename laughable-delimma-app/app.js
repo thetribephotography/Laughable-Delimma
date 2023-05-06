@@ -30,10 +30,6 @@ app.post("/chat", async (req, res) => {
     res.send(completion.data.choices[0].text);
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Server Running");
-// });
-
 const port = process.env.ACCESS_PORT || 6500;
 
 app.listen(port, () => {
