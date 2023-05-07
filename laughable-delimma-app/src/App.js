@@ -12,7 +12,7 @@
     const [sentences, setSentences] = useState([
       "Hey There!",
       "What Brings you here today",
-      "Sikeee!!!!1",
+      "Sikeee!!!!",
       "Could careLess Honestly",
       "..",
       ".",
@@ -38,15 +38,16 @@
       // Increment the current index to display the next sentence
       if (currentIndex === sentences.length - 1) {
 
-                axios
-                  .post(`${HTTP}`, { prompt })
-                  .then((res) => setResponse(res.data))
-                  .catch((error) => {
-                    console.log(error);
-                  });
-                console.log("Form submitted!");
+                // axios
+                //   .post(`${HTTP}`, { prompt })
+                //   .then((res) => setResponse(res.data))
+                //   .catch((error) => {
+                //     console.log(error);
+                //   });
+                
+                console.log("Form Ready!");
 
-                setFormSubmitted(true);
+                // setFormSubmitted(true);
 
 
       } else {
@@ -57,6 +58,15 @@
 
 
     function handleClick2() {
+      
+      axios
+        .post(`${HTTP}`, { prompt })
+        .then((res) => setResponse(res.data))
+        .catch((error) => {
+          console.log(error);
+        });
+          console.log("Form submitted!");
+
       if (response) {
         return <div>{response}</div>;
       } else {
@@ -79,12 +89,13 @@
                 value={prompt}
                 onChange={handlePrompt}
               />
-              <button type="submit">Submit</button>
+              {formSubmitted}
+              <button onClick={handleClick2} type="submit">
+                Submit
+              </button>
             </form>
           )}
         </div>
-
-        {formSubmitted && handleClick2()}
 
         {/* <div onClick={handleClick2}>
           {response ? response : "Are You Sure About That Mate?"}
