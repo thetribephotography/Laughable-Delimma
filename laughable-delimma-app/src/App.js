@@ -1,4 +1,5 @@
   import logo from './logo.svg';
+  import logo_1 from './logo_1_1.png'
   import './App.css';
   import axios from 'axios';
   import { useState } from "react";
@@ -8,6 +9,7 @@
     const [prompt, setPrompt] = useState("");
     const [response, setResponse] = useState("");
     const [formSubmitted, setFormSubmitted] = useState(false);
+    // const [grant, setGrant] = useState(0);
 
     const [sentences, setSentences] = useState([
       "Hey There!",
@@ -37,18 +39,9 @@
       e.preventDefault();
       // Increment the current index to display the next sentence
       if (currentIndex === sentences.length - 1) {
-
-                // axios
-                //   .post(`${HTTP}`, { prompt })
-                //   .then((res) => setResponse(res.data))
-                //   .catch((error) => {
-                //     console.log(error);
-                //   });
                 
-                console.log("Form Ready!");
-
-                // setFormSubmitted(true);
-
+          console.log("Form Ready!");
+          setFormSubmitted(true);
 
       } else {
         // Increment the current index to display the next sentence
@@ -67,6 +60,8 @@
         });
           console.log("Form submitted!");
 
+          // setGrant({prompt});
+
       if (response) {
         return <div>{response}</div>;
       } else {
@@ -77,29 +72,35 @@
     const handlePrompt = (e) => setPrompt(e.target.value);
 
     return (
-      <div className="content">
-        <div onClick={handleClick}>
-          {sentences[currentIndex]}
-
-          {currentIndex === sentences.length - 1 && (
-            <form onSubmit={handleClick}>
-              <input
-                type="text"
-                placeholder=""
-                value={prompt}
-                onChange={handlePrompt}
-              />
-              {formSubmitted}
-              <button onClick={handleClick2} type="submit">
-                Submit
-              </button>
-            </form>
-          )}
+      <div>
+        <div>
+          <img className="pic" src={logo_1} alt="Logo" />
         </div>
 
-        {/* <div onClick={handleClick2}>
+        <div className="content">
+          <div onClick={handleClick}>
+            {sentences[currentIndex]}
+
+            {currentIndex === sentences.length - 1 && (
+              <form onSubmit={handleClick}>
+                <input
+                  type="text"
+                  placeholder=""
+                  value={prompt}
+                  onChange={handlePrompt}
+                />
+                {formSubmitted}
+                <button onClick={handleClick2} type="submit">
+                  Submit
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* <div onClick={handleClick2}>
           {response ? response : "Are You Sure About That Mate?"}
         </div> */}
+        </div>
       </div>
     );
   }

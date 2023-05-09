@@ -24,14 +24,16 @@ app.post("/chat", async (req, res) => {
           model: "text-davinci-003",
           max_tokens: 512,
           temperature: 1,
+        //   role: user,
+        //   content: `${prompt}`,
           prompt:
             `You are to unapologetically mean and decisive and ask upfront questions if need be when replying what i say here: ${prompt}`,
         });
 
     // You are to unapologetically mean and decisive and ask upfront questions if need be when replying what i say here: ${prompt}
 
-    res.send(completion.data.choices[0].text);
-    console.log(completion.data.choices[0].text);
+        res.send(completion.data.choices[0].text);
+        console.log(completion.data.choices[0].text);
 
 
     } catch(e){
