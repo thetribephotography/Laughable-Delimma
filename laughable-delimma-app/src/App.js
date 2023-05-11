@@ -9,6 +9,7 @@
     const [prompt, setPrompt] = useState("");
     const [response, setResponse] = useState("");
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const HTTP = "http://localhost:6500/chat"; 
     // const [grant, setGrant] = useState(0);
 
     const [sentences, setSentences] = useState([
@@ -34,9 +35,9 @@
 
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const HTTP = "http://localhost:6500/chat";
-    function handleClick(e) {
-      e.preventDefault();
+    
+    function handleClick() {
+      // e.preventDefault();
       // Increment the current index to display the next sentence
       if (currentIndex === sentences.length - 1) {
                 
@@ -50,10 +51,10 @@
     }
 
 
-    function handleClick2() {
-      
+    function handleClick2 (e) {
+      e.preventDefault();
       axios
-        .post(`${HTTP}`, { prompt })
+        .post(`${HTTP}`, { prompt }, { withCredentials: false })
         .then((res) => setResponse(res.data))
         .catch((error) => {
           console.log(error);
@@ -83,23 +84,31 @@
 
             {currentIndex === sentences.length - 1 && (
               <form onSubmit={handleClick}>
-                <input
-                  type="text"
-                  placeholder=""
-                  value={prompt}
-                  onChange={handlePrompt}
-                />
-                {formSubmitted}
+                <div class="form-floating ">
+                  <textarea
+                    class="form-control bg-secondary text-black border border-secondary-subtle"
+                    placeholder="Say Something"
+                    id="floatingTextarea"
+                    value={prompt}
+                    onChange={handlePrompt}
+                  ></textarea>
+                  {/* <label for="floatingTextarea">Comments</label> */}
+                </div>
+
                 <button onClick={handleClick2} type="submit">
-                  Submit
+                  Submit  
                 </button>
               </form>
             )}
           </div>
+          
+          {formSubmitted === true}
+          <div onClick={handleClick2}>
+          {response}
 
-          {/* <div onClick={handleClick2}>
-          {response ? response : "Are You Sure About That Mate?"}
-        </div> */}
+          {/* {formSubmitted === false}
+          <div onClick={handleClick2}> {"Are You Sure About That Mate?"} </div> */}
+        </div>
         </div>
       </div>
     );

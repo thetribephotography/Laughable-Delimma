@@ -12,28 +12,41 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const configuration = new Configuration({
-  apiKey: "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",
+  organization: "org-Q2IPECzTf6rjnjrd1junAI1A",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
+app.use((req, res, next) => {
+  // Set the CORS headers
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  next();
+});
+
+
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST"],
+  credentials: false,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.post("/chat", async (req, res) => {
     const{prompt} = req.body;
     try{
         const completion = await openai.createCompletion({
           model: "text-davinci-003",
-          max_tokens: 512,
+          max_tokens: 100,
           temperature: 1,
-        //   role: user,
-        //   content: `${prompt}`,
-          prompt:
-            `You are to unapologetically mean and decisive and ask upfront questions if need be when replying what i say here: ${prompt}`,
+          prompt: `You are to unapologetically mean and decisive and ask upfront questions if need be when replying what i say here: ${prompt}`,
         });
+        
 
-    // You are to unapologetically mean and decisive and ask upfront questions if need be when replying what i say here: ${prompt}
-
-        res.send(completion.data.choices[0].text);
-        console.log(completion.data.choices[0].text);
+        res.send(completion.data.choices[0].text); 
+        // res.send(result);
+        // console.log(result);
 
 
     } catch(e){
