@@ -73,12 +73,14 @@
     const handlePrompt = (e) => setPrompt(e.target.value);
 
     return (
-      <div>
-        <div>
+      <div className="position-relative">
+        <div class="position-absolute top-0 start-0 translate-middle"></div>
+        <div className="position-absolute top-0 start-50 translate-middle">
           <img className="pic" src={logo_1} alt="Logo" />
         </div>
 
-        <div className="content">
+        <div class="position-absolute top-50 start-0 translate-middle"></div>
+        <div className="position-absolute top-50 start-50 translate-middle mt-5 pt-5">
           <div onClick={handleClick}>
             {sentences[currentIndex]}
 
@@ -86,7 +88,7 @@
               <form onSubmit={handleClick}>
                 <div class="form-floating ">
                   <textarea
-                    class="form-control bg-secondary text-black border border-secondary-subtle"
+                    className="form-control bg-light text-black border border-secondary-subtle m-1"
                     placeholder="Say Something"
                     id="floatingTextarea"
                     value={prompt}
@@ -95,21 +97,26 @@
                   {/* <label for="floatingTextarea">Comments</label> */}
                 </div>
 
-                <button onClick={handleClick2} type="submit">
-                  Submit  
+                <button
+                  className="btn btn-light text-bg-success"
+                  onClick={handleClick2}
+                  type="submit"
+                >
+                  Submit
                 </button>
               </form>
             )}
           </div>
-          
+
           {formSubmitted === true}
           <div onClick={handleClick2}>
-          {response}
+            {response}
 
-          {/* {formSubmitted === false}
+            {/* {formSubmitted === false}
           <div onClick={handleClick2}> {"Are You Sure About That Mate?"} </div> */}
+          </div>
         </div>
-        </div>
+        <div class="position-absolute top-50 start-100 translate-middle"></div>
       </div>
     );
   }
