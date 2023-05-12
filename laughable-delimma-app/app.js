@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const configuration = new Configuration({
-  organization: "org-Q2IPECzTf6rjnjrd1junAI1A",
-  apiKey: "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",
+  organization: process.env.OPEN_AI_ORGANIZATION,
+  apiKey: process.env.OPEN_AI_KEY,
 });
 
 const openai = new OpenAIApi(configuration);

@@ -1,16 +1,20 @@
-.content{
+/* .content{
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-left: -50px;
-}
+    margin-left: -75px;
+} */
+/* 
+textarea{
+  background-color: rgb(240, 255, 255);
+} */
 
 .pic{
     /* display: flex; */
-    margin-left: 700px;
+    /* margin-left: 700px; */
     /* justify-content: center !important;
     align-items: center; */
-    align-self: center;
+    /* align-self: center; */
     height: 100px;
     width: 100px;
     /* bottom: 0;
@@ -19,7 +23,7 @@
     /* top: 50%; */
 }
 
-@media screen and (min-width: 320px) {
+/* @media screen and (min-width: 320px) {
   .pic{
     margin-left: 105px;
   }
@@ -27,7 +31,7 @@
 
 @media screen and (min-width: 375px) {
   .pic{
-    margin-left: 135px;
+    margin-left: 126px;
   }
 }
 
@@ -46,7 +50,7 @@
 
 @media screen and (min-width: 1024px) {
   .pic{
-    margin-left: 450px;
+    margin-left: 647px;
   }
 }
 
@@ -54,7 +58,7 @@
   .pic{
     margin-left: 650px;
   }
-}
+} */
 
 
 .App {
