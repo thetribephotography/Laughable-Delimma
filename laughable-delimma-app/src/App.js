@@ -1,6 +1,6 @@
   import logo from './logo.svg';
   import logo_1 from './logo_1_1.png'
-  import './App.css';
+  import './index.css';
   import axios from 'axios';
   import { useState } from "react";
 
@@ -73,51 +73,51 @@
     const handlePrompt = (e) => setPrompt(e.target.value);
 
     return (
-      <div className="position-relative">
-        <div class="position-absolute top-0 start-0 translate-middle"></div>
-        <div className="position-absolute top-0 start-50 translate-middle">
-          <img className="pic" src={logo_1} alt="Logo" />
-        </div>
+      <div className="bodie">
+        <div className="contain">
+            <div
+              className="fire card_edit card card-4 p-4 bg-dark text-center h-45 bg-transparent"
+              onClick={handleClick}
+            >
+              <div className="">
+                {sentences[currentIndex]}
 
-        <div class="position-absolute top-50 start-0 translate-middle"></div>
-        <div className="position-absolute top-50 start-50 translate-middle mt-5 pt-5">
-          <div onClick={handleClick}>
-            {sentences[currentIndex]}
+                {currentIndex === sentences.length - 1 && (
+                  <form onSubmit={handleClick}>
+                    <div className="form-floating">
+                      <textarea
+                        className="form-control bg-light text-black border border-secondary-subtle m-2"
+                        placeholder="Say Something"
+                        id="floatingTextarea"
+                        value={prompt}
+                        onChange={handlePrompt}
+                      ></textarea>
+                      {/* <label for="floatingTextarea">Comments</label> */}
+                    </div>
 
-            {currentIndex === sentences.length - 1 && (
-              <form onSubmit={handleClick}>
-                <div class="form-floating ">
-                  <textarea
-                    className="form-control bg-light text-black border border-secondary-subtle m-1"
-                    placeholder="Say Something"
-                    id="floatingTextarea"
-                    value={prompt}
-                    onChange={handlePrompt}
-                  ></textarea>
-                  {/* <label for="floatingTextarea">Comments</label> */}
-                </div>
+                    <button
+                      className="btn btn-light text-bg-success m-2"
+                      onClick={handleClick2}
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                )}
 
-                <button
-                  className="btn btn-light text-bg-success"
-                  onClick={handleClick2}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-          </div>
+                {formSubmitted === true}
+                <div onClick={handleClick2}>
+                  {response}
 
-          {formSubmitted === true}
-          <div onClick={handleClick2}>
-            {response}
-
-            {/* {formSubmitted === false}
+                  {/* {formSubmitted === false}
           <div onClick={handleClick2}> {"Are You Sure About That Mate?"} </div> */}
+                </div>
+              </div>
+            </div>
+            <div className='pic'></div>
+            {/* </div> */}
           </div>
         </div>
-        <div class="position-absolute top-50 start-100 translate-middle"></div>
-      </div>
     );
   }
 
